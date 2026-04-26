@@ -1,24 +1,33 @@
-FONCTION dot_product(v1, v2 : TABLEAU DE REELS) : REEL
+ALGORITHME : Verifier_Orthogonalite_Vecteurs
+
+PROCÉDURE dot_product(v1, v2 : TABLEAU DE RÉELS, VAR ps : RÉEL)
 VARIABLES
-    i : ENTIER
-    ps : REEL
-DEBUT
+    j : ENTIER
+DÉBUT
     ps <- 0
-    POUR i DE 0 À longueur(v1) - 1 FAIRE
-        ps <- ps + (v1[i] * v2[i])
+    // Boucle imbriquée (interne) pour le calcul
+    POUR j DE 0 À longueur(v1) - 1 FAIRE
+        ps <- ps + (v1[j] * v2[j])
     FIN_POUR
-    RETOURNER ps
 FIN
 
-ALGORITHME : Verifier_Orthogonalite
+ALGORITHME PRINCIPAL
 VARIABLES
-    v1, v2 : TABLEAU DE REELS
     n, i : ENTIER
-DEBUT
-    LIRE(n) // Nombre de couples
-    POUR i DE 1 À n FAIRE
-        LIRE(v1, v2)
-        SI dot_product(v1, v2) = 0 ALORS
+    v1, v2 : TABLEAU DE RÉELS
+    resultat_ps : RÉEL
+    liste_couples : TABLEAU
+DÉBUT
+    LIRE(n)
+    // Boucle externe pour parcourir les n couples
+    POUR i DE 0 À n - 1 FAIRE
+        v1 <- liste_couples[i][0]
+        v2 <- liste_couples[i][1]
+        
+        // Appel de la procédure avec passage par référence pour resultat_ps
+        dot_product(v1, v2, resultat_ps)
+
+        SI (resultat_ps = 0) ALORS
             AFFICHER("Les vecteurs sont orthogonaux")
         SINON
             AFFICHER("Les vecteurs ne sont pas orthogonaux")
