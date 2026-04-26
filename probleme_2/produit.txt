@@ -1,0 +1,27 @@
+FONCTION dot_product(v1, v2 : TABLEAU DE REELS) : REEL
+VARIABLES
+    i : ENTIER
+    ps : REEL
+DEBUT
+    ps <- 0
+    POUR i DE 0 À longueur(v1) - 1 FAIRE
+        ps <- ps + (v1[i] * v2[i])
+    FIN_POUR
+    RETOURNER ps
+FIN
+
+ALGORITHME : Verifier_Orthogonalite
+VARIABLES
+    v1, v2 : TABLEAU DE REELS
+    n, i : ENTIER
+DEBUT
+    LIRE(n) // Nombre de couples
+    POUR i DE 1 À n FAIRE
+        LIRE(v1, v2)
+        SI dot_product(v1, v2) = 0 ALORS
+            AFFICHER("Les vecteurs sont orthogonaux")
+        SINON
+            AFFICHER("Les vecteurs ne sont pas orthogonaux")
+        FIN_SI
+    FIN_POUR
+FIN
