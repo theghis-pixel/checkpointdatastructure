@@ -1,0 +1,37 @@
+ALGORITHME : Somme_Distincts
+VARIABLES
+    set1, set2 : TABLEAU D'ENTIERS
+    somme, i, j : ENTIER
+    trouve : BOOLEEN
+
+DEBUT
+    somme <- 0
+
+    // Comparer set1 par rapport à set2
+    POUR i DE 0 À longueur(set1) - 1 FAIRE
+        trouve <- FAUX
+        POUR j DE 0 À longueur(set2) - 1 FAIRE
+            SI set1[i] = set2[j] ALORS
+                trouve <- VRAI
+            FIN_SI
+        FIN_POUR
+        SI trouve = FAUX ALORS
+            somme <- somme + set1[i]
+        FIN_SI
+    FIN_POUR
+
+    // Faire l'inverse (set2 par rapport à set1)
+    POUR i DE 0 À longueur(set2) - 1 FAIRE
+        trouve <- FAUX
+        POUR j DE 0 À longueur(set1) - 1 FAIRE
+            SI set2[i] = set1[j] ALORS
+                trouve <- VRAI
+            FIN_SI
+        FIN_POUR
+        SI trouve = FAUX ALORS
+            somme <- somme + set2[i]
+        FIN_SI
+    FIN_POUR
+
+    AFFICHER("La somme est : ", somme)
+FIN
